@@ -13,9 +13,8 @@ import openai
 
 openai.api_key = str(os.environ.get("OPEN_AI_TOKEN")).strip()
 
+
 # OpenAIのAPIを使って要約を行う
-
-
 def summarize(text):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -85,9 +84,8 @@ except SlackApiError as e:
     print("Error : {}".format(e))
     exit(1)
 
+
 # 指定したチャンネルの履歴を取得する
-
-
 def load_messages(channel_id):
     result = None
     try:
@@ -135,6 +133,7 @@ def load_messages(channel_id):
             continue
         if message["text"].strip() == "":
             continue
+
         # ユーザーIDからユーザー名に変換する
         user_id = message["user"]
         sender_name = None
